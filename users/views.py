@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from users.serializers import UserDetailSerializer
 
 
+
 # Create your views here.
 def info(request):
     User = get_user_model()
@@ -15,4 +16,4 @@ def info(request):
         user_id = toke_user["user_id"]
         user_info = User.objects.get(pk= user_id)
         serializer = UserDetailSerializer(user_info)
-        return JsonResponse(serializer.data)
+        return JsonResponse(serializer.data, status=200)
