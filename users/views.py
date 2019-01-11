@@ -20,7 +20,6 @@ def info(request):
         toke_user = []
         toke_user = jwt_decode_handler(token)
         user_id = toke_user["user_id"]
-        print(type(user_id))
         user_info = User.objects.get(pk= user_id)
         serializer = UserDetailSerializer(user_info)
         return JsonResponse(serializer.data)
