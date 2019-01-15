@@ -17,3 +17,19 @@ def info(request):
         user_info = User.objects.get(pk= user_id)
         serializer = UserDetailSerializer(user_info)
         return JsonResponse(serializer.data, status=200)
+
+
+def jwt_response_payload_handler(token, user=None, request=None):
+    """
+    登录成功后自定义返回
+    :param token:
+    :param user:
+    :param request:
+    :return:
+    """
+    return {
+    "token":token,
+    "code":2000
+
+
+    }
